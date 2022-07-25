@@ -1,0 +1,17 @@
+nav.main-navbar{
+    display: flex;
+    border-bottom: solid black 1px;
+}
+
+div.search-container{
+    margin: 20px auto;
+}
+
+input#search-bar{
+    padding: 10px;
+    width: 300px;
+}
+
+button#search-button{
+    padding: 10px;
+}
