@@ -14,8 +14,18 @@ function BookPage(props)
     }, [])
 
     return (
-        <div>
-            <h2>{book._id}</h2>
+        <div class="book-page">
+            <div>
+                <h2>{book.Title}</h2>
+                <img src={book.Cover}/>
+                <h3>Author: <span class="author">{book.Author}</span></h3>
+            </div>
+            <div class="page-book-details">
+                <h3>Book Description</h3>
+                <p>{book.Description}</p>
+                <button class="page-button"><a href={book.NYPL_Link}>View More Details</a></button>
+                <button class="page-button"><a href={book.linkToBuy}>Buy Now</a></button>
+            </div>
         </div>    
     );
 }
