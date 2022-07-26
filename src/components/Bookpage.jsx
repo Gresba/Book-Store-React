@@ -43,7 +43,8 @@ function BookPage(props)
                 <div>
                     <h3>Book Description</h3>
                     <p>{book.Description}</p>
-                    <button class="page-button"><a href={book.NYPL_Link}>View More Details</a></button>
+                    <button class="page-button"><a href={book.URL}>View Details</a></button>
+                    <button class="page-button"><a href={book.NYPL_Link}>NYPL Link</a></button>
                     <button class="page-button"><a href={book.linkToBuy}>Buy Now</a></button>
                 </div>
                 <div>

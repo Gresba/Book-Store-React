@@ -7,11 +7,29 @@ function Upload()
     const [ author, setAuthor ] = useState("");
     const [ description, setDescription ] = useState("");
     const [ imageLink, setImageLink ] = useState ("");
-    const [ moreInfo, setMoreInfo ] = useState ("");
+    const [ detailLink, setDetailLink ] = useState ("");
+    const [ nyplLink, setNyplLink] = useState ("");
     const [ purchaseLink, setPurchaseLink ] = useState ("");
 
-    const uploadBook = () => {
-        
+    const uploadBook = (e) => {
+        e.preventDefault();
+        fetch("https://jsonbookapi1.herokuapp.com/api/books", {
+	        method: 'POST',
+	        headers:{
+	            'Content-Type':'application/json'
+	        },
+	        body: JSON.stringify(
+                {
+                    "Title": title,
+                    "Author": author,
+                    "Description": description,
+                    "Cover": imageLink,
+                    "URL": detailLink,
+                    "linkToBuy": purchaseLink,
+                    "NYPL_Link": nyplLink,
+}
+            )
+        }) 
     }
 
     const handleChange = (e) => {
@@ -25,8 +43,10 @@ function Upload()
             setDescription(value)
         else if(type === "imagelink") 
             setImageLink(value)
-        else if(type === "infolink") 
-            setMoreInfo(value)
+        else if(type === "detaillink") 
+            setDetailLink(value)
+        else if(type === "nypllink") 
+            setNyplLink(value)
         else if(type === "purchaselink") 
             setPurchaseLink(value)
     }
@@ -43,7 +63,9 @@ function Upload()
             <p>Image Link:</p>
             <input value={imageLink} name="imagelink" onChange={handleChange} type="text" placeholder="Enter Image Url..."/>
             <p>More Info Link:</p>
-            <input value={moreInfo} name="infolink" onChange={handleChange} type="text" placeholder="Enter More Info Link..."/>
+            <input value={detailLink} name="detaillink" onChange={handleChange} type="text" placeholder="Enter Detail Link..."/>
+            <p>NYPL Link:</p>
+            <input value={nyplLink} name="nypllink" onChange={handleChange} type="text" placeholder="Enter NYPL Link..."/>
             <p>Purchase Link:</p>
             <input value={purchaseLink} name="purchaselink" onChange={handleChange} type="text" placeholder="Enter Purchase Link..."/>
             <br/>
