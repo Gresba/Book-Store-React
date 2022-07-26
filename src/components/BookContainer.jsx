@@ -5,7 +5,7 @@ function BookContainer(props)
     return (
         <div class="books-container">
             {props.data.map(book => {
-                return <Book imageUrl={book.Cover} title={book.Title} author={book.Author}/>
+                return <Book book={book}/> 
             })}
         </div>
     );

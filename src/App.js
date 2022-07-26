@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar.jsx";
 import BookContainer from "./components/BookContainer.jsx";
+import BookPage from "./components/Bookpage.jsx";
 import { Routes, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react"
 
@@ -22,6 +23,7 @@ function App() {
         <main>
             <Routes>
                 <Route path="/" element={<BookContainer data={bookData}/>}/>
+                <Route path="/books/:id" element={<BookPage/>}/>
             </Routes>
         </main>
     </>

@@ -7,6 +7,11 @@ nav.main-navbar{
     border-bottom: solid black 1px;
 }
 
+h1:visited { 
+ text-decoration: none; 
+ color: orange; 
+}
+
 div.books-container{
     padding: 20px;
     display: flex;
