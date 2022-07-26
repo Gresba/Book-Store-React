@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from "react"
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function BookPage(props)
 {
@@ -16,7 +16,7 @@ function BookPage(props)
         fetch(apiUrl)
             .then(res => res.json())
             .then(res => setBook(res))
-    }, [params.id])
+    }, [apiUrl])
 
     const deleteBook = async () => {
         const response = await fetch(apiUrl, {
