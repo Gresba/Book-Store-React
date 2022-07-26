@@ -1,10 +1,11 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from "react"
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function BookPage(props)
 {
     const params = useParams()
+    let navigate = useNavigate();
 
     const bookId = params.id;
 
@@ -15,7 +16,7 @@ function BookPage(props)
         fetch(apiUrl)
             .then(res => res.json())
             .then(res => setBook(res))
-    })
+    }, [params.id])
 
     const deleteBook = async () => {
         const response = await fetch(apiUrl, {
@@ -23,6 +24,9 @@ function BookPage(props)
             headers: {
                 'Content-type': 'application/json'
             }
+        }).then(() => {
+            props.setToggle(prev => !prev)
+            navigate("/");
         });
 
         console.log(response);
@@ -43,9 +47,7 @@ function BookPage(props)
                     <button class="page-button"><a href={book.linkToBuy}>Buy Now</a></button>
                 </div>
                 <div>
-                    <Link to="/">
-                        <button class="page-button" onClick={deleteBook}>Remove Book</button>
-                    </Link>
+                    <button class="page-button" onClick={deleteBook}>Delete Book</button>
                     <button class="page-button">Edit Book</button>
                 </div>
             </div>
