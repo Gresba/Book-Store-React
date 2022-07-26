@@ -3,9 +3,9 @@ import Book from "./Book.jsx";
 function BookContainer(props)
 {
     return (
-        <div>
+        <div class="books-container">
             {props.data.map(book => {
-                return <Book title={book.Title} author={book.Author}/>
+                return <Book imageUrl={book.Cover} title={book.Title} author={book.Author}/>
             })}
         </div>
     );

@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar.jsx";
 import BookContainer from "./components/BookContainer.jsx";
-
+import { Routes, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react"
 
 function App() {
@@ -16,12 +16,15 @@ function App() {
         }
     }, [])
 
-
   return (
-      <div class="app">
-          <Navbar/>
-          <BookContainer data={bookData}/>
-      </div>
+    <>
+        <Navbar/>
+        <main>
+            <Routes>
+                <Route path="/" element={<BookContainer data={bookData}/>}/>
+            </Routes>
+        </main>
+    </>
   );
 }
 

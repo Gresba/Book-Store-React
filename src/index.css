@@ -1,9 +1,22 @@
+body {
+    background-color: #F3E496;
+}
+
 nav.main-navbar{
     display: flex;
     border-bottom: solid black 1px;
 }
 
+div.books-container{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
 div.search-container{
+    display: flex;
     margin: 20px auto;
 }
 
@@ -14,4 +27,26 @@ input#search-bar{
 
 button#search-button{
     padding: 10px;
+}
+
+div.book-item{
+    width: 24%;    
+    box-sizing: border-box;
+    border: 1px black solid;
+    margin: 5px;
+}
+
+div.book-item:hover{
+    cursor: pointer;
+}
+
+div.book-item img{
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 400px;
+    max-height: 400px;
+}
+
+div.book-description{
+    padding: 0 10px;
 }
