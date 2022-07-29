@@ -2,7 +2,7 @@ import { useState } from "react"
 
 function Upload()
 {
-
+    const [ id, setId ] = useState("");
     const [ title, setTitle ] = useState("");
     const [ author, setAuthor ] = useState("");
     const [ description, setDescription ] = useState("");
@@ -11,15 +11,57 @@ function Upload()
     const [ nyplLink, setNyplLink] = useState ("");
     const [ purchaseLink, setPurchaseLink ] = useState ("");
 
-    const uploadBook = (e) => {
+    const updateObject = {}
+
+    const updateBook = (e) => {
         e.preventDefault();
+        if(id.length > 0)
+        {
+            if(title.length !== 0)
+                updateObject.Title = title
+            if(author.length !== 0)
+                updateObject.Author = author;
+            if(description.length !== 0)
+                updateObject.Description =description;
+            if(imageLink.length !== 0)
+                updateObject.Cover = imageLink;
+            if(detailLink.length !== 0)
+                updateObject.URL = detailLink;
+            if(nyplLink.length !== 0)
+                updateObject.NYPL_Link = nyplLink;
+            if(purchaseLink.length !== 0)
+                updateObject.linkToBuy = purchaseLink;
+            console.log(updateObject)
+
+            fetch(`https://jsonbookapi1.herokuapp.com/api/books/${id}`, {
+                method: 'PUT',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify(updateObject)
+            })
+        }else{
+            uploadBook(e)
+        }
+
+        setId("");
+        setTitle("");
+        setAuthor("");
+        setDescription("");
+        setImageLink("");
+        setDetailLink("");
+        setNyplLink("");
+        setPurchaseLink("");
+    }
+
+    const uploadBook = (e) => {
         fetch("https://jsonbookapi1.herokuapp.com/api/books", {
 	        method: 'POST',
 	        headers:{
 	            'Content-Type':'application/json'
 	        },
 	        body: JSON.stringify(
-                {
+                {   
                     "Title": title,
                     "Author": author,
                     "Description": description,
@@ -27,7 +69,7 @@ function Upload()
                     "URL": detailLink,
                     "linkToBuy": purchaseLink,
                     "NYPL_Link": nyplLink,
-}
+                }
             )
         }) 
     }
@@ -35,7 +77,9 @@ function Upload()
     const handleChange = (e) => {
         const value = e.target.value;
         const type = e.target.name;
-        if(type === "title")
+        if(type === "id")
+            setId(value);
+        else if(type === "title")
             setTitle(value) 
         else if(type === "author") 
             setAuthor(value)
@@ -52,8 +96,10 @@ function Upload()
     }
 
     return (
-        <form onSubmit={uploadBook} class="upload-container">
-            <h3>Upload New Book</h3>
+        <form onSubmit={updateBook} class="upload-container">
+            <h3>Upload/Update New Book</h3>
+            <p>Id:</p>
+            <input value={id} name="id" onChange={handleChange} type="text" placeholder="Enter Id To Update..."/>
             <p>Title:</p>
             <input value={title} name="title" onChange={handleChange} type="text" placeholder="Enter Title..." required="true"/>
             <p>Author:</p>

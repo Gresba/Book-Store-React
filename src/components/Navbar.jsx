@@ -23,7 +23,7 @@ function Navbar(props)
                 <input id="search-bar" onChange={handleChange} placeholder="Search By Title or Author"></input>
                 <button id="search-button">Search</button>
             </div>
-            <h1 onClick={goUpload}>Upload New Book</h1>
+            <h1 onClick={goUpload}>Edit/Upload Book</h1>
         </nav>
     );
 }

@@ -15,9 +15,11 @@ function BookPage(props)
     useEffect(() => {
         fetch(apiUrl)
             .then(res => res.json())
-            .then(res => setBook(res))
-    }, [apiUrl])
-
+            .then(res => {
+                setBook(res)
+            })
+    }, [apiUrl]) 
+    
     const deleteBook = async () => {
         const response = await fetch(apiUrl, {
             method: 'DELETE',
@@ -49,7 +51,6 @@ function BookPage(props)
                 </div>
                 <div>
                     <button class="page-button" onClick={deleteBook}>Delete Book</button>
-                    <button class="page-button">Edit Book</button>
                 </div>
             </div>
         </div>    
