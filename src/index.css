@@ -7,9 +7,12 @@ nav.main-navbar{
     border-bottom: solid black 1px;
 }
 
-h1:visited { 
- text-decoration: none; 
- color: orange; 
+h1{
+    padding: 10px;
+}
+
+h1:hover{
+    cursor: pointer;
 }
 
 div.books-container{
@@ -54,4 +57,41 @@ div.book-item img{
 
 div.book-description{
     padding: 0 10px;
+}
+
+div.book-page{
+    margin: 20px;
+    display: flex;
+}
+
+div.book-page img{
+    min-width: 350px;
+    max-width: 350px;
+    min-height: 500px;
+    max-height: 500px;
+}
+
+div.page-book-details{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 20px;
+}
+
+button.page-button{
+    padding: 5px 10px;
+    margin: 10px;
+}
+
+span.author{
+    font-weight: normal;
+}
+
+form.upload-container input{
+    padding: 5px 10px;
+    width: 150px;
+}
+
+form.upload-container p{
+    margin: 5px 0;
 }
