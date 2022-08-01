@@ -16,11 +16,9 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -41,7 +39,7 @@ This project is using a Book API to display books and their details and also to 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 * API Github Repo: https://github.com/mr7811/Json-API-Project
 * API Url: https://jsonbookapi1.herokuapp.com/api/books 
-* [![React][React.js]][React-url]
+* React.js
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
